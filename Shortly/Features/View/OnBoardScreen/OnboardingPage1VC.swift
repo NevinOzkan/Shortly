@@ -8,22 +8,24 @@
 import UIKit
 
 class OnboardingPage1VC: UIViewController {
-
+    
+    
+    @IBOutlet weak var logoImage: UIImageView!
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var illustrationImage: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+    @IBAction func startTapped(_ sender: Any) {
+        let onboardingPageVC = OnboardingPageVC(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        onboardingPageVC.modalPresentationStyle = .fullScreen
+        present(onboardingPageVC, animated: true, completion: nil)
     }
-    */
-
 }

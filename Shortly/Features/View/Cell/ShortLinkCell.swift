@@ -9,6 +9,10 @@ import UIKit
 
 class ShortLinkCell: UITableViewCell {
 
+    @IBOutlet weak var delegateIcon: UIImageView!
+    @IBOutlet weak var originalLink: UILabel!
+    @IBOutlet weak var shortLink: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,4 +24,8 @@ class ShortLinkCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBOutlet weak var delegateTapped: UIView!
+    
+    @IBAction func copyClicked(_ sender: Any) {
+    }
 }
