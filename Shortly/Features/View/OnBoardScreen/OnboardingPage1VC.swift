@@ -8,8 +8,7 @@
 import UIKit
 
 class OnboardingPage1VC: UIViewController {
-    
-    
+
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var textView: UITextView!

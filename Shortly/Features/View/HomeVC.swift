@@ -9,10 +9,14 @@ import UIKit
 
 class HomeVC: UIViewController {
 
+    @IBOutlet weak var shortenTextField: UITextField!
+    @IBOutlet weak var shortenButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
     
     }
 
+    @IBAction func shortenButton(_ sender: Any) {
+    }
 }
