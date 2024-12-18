@@ -9,6 +9,7 @@ import UIKit
 
 class OnboardingPageVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
+    //yalnızca ihtiyaç duyulduğunda bellekte oluşturulmasını sağlar.
     lazy var pages: [UIViewController] = {
         let page1 = OnboardingPage2VC()
         let page2 = OnboardingPage3VC()
@@ -37,7 +38,8 @@ class OnboardingPageVC: UIPageViewController, UIPageViewControllerDataSource, UI
         
         setupPageControl()
     }
-    
+
+                                    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let currentIndex = pages.firstIndex(of: viewController) else { return nil }
         let previousIndex = currentIndex - 1
@@ -58,7 +60,6 @@ class OnboardingPageVC: UIPageViewController, UIPageViewControllerDataSource, UI
     
     private func setupPageControl() {
         view.addSubview(pageControl)
-        
     
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
