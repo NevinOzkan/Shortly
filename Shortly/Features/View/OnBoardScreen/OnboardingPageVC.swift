@@ -39,19 +39,18 @@ class OnboardingPageVC: UIPageViewController, UIPageViewControllerDataSource, UI
         setupPageControl()
     }
 
-                                    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let currentIndex = pages.firstIndex(of: viewController) else { return nil }
         let previousIndex = currentIndex - 1
         return previousIndex >= 0 ? pages[previousIndex] : nil
     }
-    
+    //Bir sonraki sayfayı kontrol ediyor
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let currentIndex = pages.firstIndex(of: viewController) else { return nil }
         let nextIndex = currentIndex + 1
         return nextIndex < pages.count ? pages[nextIndex] : nil
     }
-    
+    //Geçişin tamamlanıp tammalanmaığını kontrol ediyor.
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed, let visibleVC = viewControllers?.first, let index = pages.firstIndex(of: visibleVC) {
             pageControl.currentPage = index
@@ -60,7 +59,7 @@ class OnboardingPageVC: UIPageViewController, UIPageViewControllerDataSource, UI
     
     private func setupPageControl() {
         view.addSubview(pageControl)
-    
+        
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             pageControl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -60),

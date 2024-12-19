@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A6977E612D13098500950F33 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A6977E602D13098500950F33 /* Alamofire */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A6F7DC332D12D7D200AFEFAF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6977E612D13098500950F33 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +130,7 @@
 			);
 			name = Shortly;
 			packageProductDependencies = (
+				A6977E602D13098500950F33 /* Alamofire */,
 			);
 			productName = Shortly;
 			productReference = A6F7DC192D12D7D000AFEFAF /* Shortly.app */;
@@ -208,6 +214,9 @@
 			);
 			mainGroup = A6F7DC102D12D7CF00AFEFAF;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A6977E5F2D13098500950F33 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A6F7DC1A2D12D7D000AFEFAF /* Products */;
 			projectDirPath = "";
@@ -567,6 +576,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A6977E5F2D13098500950F33 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A6977E602D13098500950F33 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A6977E5F2D13098500950F33 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A6F7DC112D12D7CF00AFEFAF /* Project object */;
 }

@@ -5,17 +5,25 @@
 //  Created by Nevin Özkan on 19.12.2024.
 //
 
-import SwiftData
+import Foundation
 
-@Model
-class URLShortening {
-    var shortURL: String
-    var longURL: String
+struct Link: Decodable {
+    var id: String
+    var title: String
+    var destination: String
+    var shortUrl: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case title = "title"
+        case destination = "destination"
+        case shortUrl = "shortUrl"
+    }
 
-    init(shortURL: String, longURL: String) {
-        self.shortURL = shortURL
-        self.longURL = longURL
+    init(id: String = UUID().uuidString, title: String, destination: String, shortUrl: String) {
+        self.id = id
+        self.title = title
+        self.destination = destination
+        self.shortUrl = shortUrl
     }
 }
-
-
