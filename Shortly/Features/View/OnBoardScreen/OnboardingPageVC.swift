@@ -9,6 +9,7 @@ import UIKit
 
 class OnboardingPageVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
+    //yalnızca ihtiyaç duyulduğunda bellekte oluşturulmasını sağlar.
     lazy var pages: [UIViewController] = {
         let page1 = OnboardingPage2VC()
         let page2 = OnboardingPage3VC()
@@ -30,7 +31,7 @@ class OnboardingPageVC: UIPageViewController, UIPageViewControllerDataSource, UI
         
         self.dataSource = self
         self.delegate = self
-        
+        //Geçiş
         if let firstPage = pages.first {
             setViewControllers([firstPage], direction: .forward, animated: true, completion: nil)
         }
@@ -38,18 +39,21 @@ class OnboardingPageVC: UIPageViewController, UIPageViewControllerDataSource, UI
         setupPageControl()
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let currentIndex = pages.firstIndex(of: viewController) else { return nil }
-        let previousIndex = currentIndex - 1
-        return previousIndex >= 0 ? pages[previousIndex] : nil
-    }
-    
+    //Sağa kaydırınca
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let currentIndex = pages.firstIndex(of: viewController) else { return nil }
         let nextIndex = currentIndex + 1
         return nextIndex < pages.count ? pages[nextIndex] : nil
     }
     
+    //Sola kaydırınca
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard let currentIndex = pages.firstIndex(of: viewController) else { return nil }
+        let previousIndex = currentIndex - 1
+        return previousIndex >= 0 ? pages[previousIndex] : nil
+    }
+    
+    //Geçişin tamamlanıp tammalanmaığını kontrol ediyor.
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed, let visibleVC = viewControllers?.first, let index = pages.firstIndex(of: visibleVC) {
             pageControl.currentPage = index
@@ -59,7 +63,6 @@ class OnboardingPageVC: UIPageViewController, UIPageViewControllerDataSource, UI
     private func setupPageControl() {
         view.addSubview(pageControl)
         
-    
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             pageControl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -60),

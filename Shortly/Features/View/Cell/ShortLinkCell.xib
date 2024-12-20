@@ -58,10 +58,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="copyButton" destination="zj5-YW-mox" id="Vdq-9V-UoZ"/>
                 <outlet property="delegateIcon" destination="7F1-xb-eF1" id="Rfi-aM-p1B"/>
-                <outlet property="originalLink" destination="8z9-Zt-9gX" id="jYx-g2-2TB"/>
-                <outlet property="shortLink" destination="9bd-Xj-zfH" id="ujF-WM-fu5"/>
+                <outlet property="longURL" destination="8z9-Zt-9gX" id="jYx-g2-2TB"/>
+                <outlet property="shortURL" destination="9bd-Xj-zfH" id="ujF-WM-fu5"/>
+                <outlet property="view" destination="SMm-j0-m7O" id="bFy-kW-aDh"/>
             </connections>
             <point key="canvasLocation" x="57.251908396946561" y="63.732394366197184"/>
         </tableViewCell>
