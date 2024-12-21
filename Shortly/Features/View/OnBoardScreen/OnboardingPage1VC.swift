@@ -18,13 +18,13 @@ class OnboardingPage1VC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
     }
     
     
     @IBAction func startTapped(_ sender: Any) {
-        let onboardingPageVC = OnboardingPageVC(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-        onboardingPageVC.modalPresentationStyle = .fullScreen
-        present(onboardingPageVC, animated: true, completion: nil)
+            let onboardingVC = OnboardingVC()
+            onboardingVC.modalPresentationStyle = .fullScreen 
+            present(onboardingVC, animated: true, completion: nil)
+        }
     }
-}
+

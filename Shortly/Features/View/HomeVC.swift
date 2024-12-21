@@ -18,8 +18,6 @@ class HomeVC: UIViewController {
         
     }
     
-    
-    
     @IBAction func shortenButton(_ sender: Any) {
     }
 }

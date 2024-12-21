@@ -29,7 +29,7 @@ class HistoryVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-    //SwiftData veritabanından ShortLink türündeki verileri alır.
+    //Verileri veritabanından çeker
     private func loadShortLinks() {
         container = try? ModelContainer(for: ShortLink.self)
         
@@ -38,7 +38,9 @@ class HistoryVC: UIViewController {
         
         shortLinks = links
         tableView.reloadData()
+        
     }
+    
 }
 
 extension HistoryVC: UITableViewDataSource, UITableViewDelegate {
@@ -56,6 +58,7 @@ extension HistoryVC: UITableViewDataSource, UITableViewDelegate {
         cell.longURL.text = shortLink.longURL
         
         return cell
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

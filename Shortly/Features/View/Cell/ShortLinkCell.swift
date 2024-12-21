@@ -21,11 +21,8 @@ class ShortLinkCell: UITableViewCell {
 
     }
     
-    @objc func delImageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        
-        
-    }
     
     @IBAction func copyClicked(_ sender: Any) {
+        
     }
 }
