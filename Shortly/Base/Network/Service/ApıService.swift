@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 protocol ApiServiceProtocol {
-    func fetchLinks(completion: @escaping (Result<[Link], Error>) -> Void)
+    func shortenLink(originalUrl: String, title: String, completion: @escaping (Result<[Link], Error>) -> Void)
 }
 
 enum ApiServiceError: Error {
@@ -19,23 +19,40 @@ enum ApiServiceError: Error {
 
 class ApiService: ApiServiceProtocol {
     
-    private let apiKey = "413f4efa0bd944e1bef86cb1001015df"
+    private let apiKey = "cd66cde343a544318479e7d809a22b3f"
     private let baseUrl = "https://api.rebrandly.com/v1/links"
     
-    func fetchLinks(completion: @escaping (Result<[Link], Error>) -> Void) {
-        let url = "\(baseUrl)?apikey=\(apiKey)&action=listLinks"
+    func shortenLink(originalUrl: String, title: String, completion: @escaping (Result<[Link], Error>) -> Void) {
+        let parameters: [String: Any] = [
+            "destination": originalUrl,
+            "title": title
+        ]
         
-        AF.request(url).responseData { response in
+        AF.request(baseUrl, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: [
+            "apikey": apiKey
+        ])
+        .responseData { response in
             switch response.result {
             case .success(let data):
+                print("API Response: \(String(data: data, encoding: .utf8) ?? "")")
+                
                 let decoder = JSONDecoder()
                 do {
-                    let links = try decoder.decode([Link].self, from: data)
-                    completion(.success(links))
+                    // Tek bir Link dönerse
+                    let link = try decoder.decode(Link.self, from: data)
+                    completion(.success([link]))
+                    
+                    // Eğer API bir dizi döndürüyor ve JSON da diziyse
+                    // let links = try decoder.decode([Link].self, from: data)
+                    // completion(.success(links))
+                    
                 } catch {
+                    print("Serialization Error: \(error.localizedDescription)")
                     completion(.failure(ApiServiceError.serializationError(internal: error)))
                 }
+                
             case .failure(let error):
+                print("Network Error: \(error.localizedDescription)")
                 completion(.failure(ApiServiceError.networkError(internal: error)))
             }
         }
