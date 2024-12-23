@@ -8,22 +8,33 @@
 import Foundation
 
 struct Link: Decodable {
-    var id: String
-    var title: String
-    var destination: String
-    var shortUrl: String
-    
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case title = "title"
-        case destination = "destination"
-        case shortUrl = "shortUrl"
-    }
+    let id: String
+    let title: String
+    let slashtag: String
+    let destination: String
+    let shortUrl: String
+    let createdAt: String
+    let updatedAt: String
+    let expiredAt: String?
+    let status: String
+    let clicks: Int
+    let isPublic: Bool
+    let domainName: String
+    let domainId: String
+    let domain: Domain
+    let https: Bool
+    let favourite: Bool
+    let creator: Creator
+}
 
-    init(id: String = UUID().uuidString, title: String, destination: String, shortUrl: String) {
-        self.id = id
-        self.title = title
-        self.destination = destination
-        self.shortUrl = shortUrl
-    }
+struct Domain: Decodable {
+    let id: String
+    let fullName: String
+    let active: Bool
+}
+
+struct Creator: Decodable {
+    let id: String
+    let fullName: String
+    let avatarUrl: String
 }
